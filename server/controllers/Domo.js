@@ -7,7 +7,7 @@ const makerPage = async (req, res) => {
     const query = { owner: req.session.account._id };
     const docs = await Domo.find(query).select('name age').lean().exec();
 
-    res.render('app', { domos: docs });
+    return res.render('app', { domos: docs });
   } catch (e) {
     console.log(e);
     return res.status(500).json({ error: 'Error retrieving domos!' });
